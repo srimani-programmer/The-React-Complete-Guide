@@ -1,12 +1,13 @@
 "use strict";
 
 var personData = {
-  name: "S G V D N Sai Santhosh Palakollu",
-  age: 21,
+  name: "Test",
+  age: 24,
   desgination: "Software Engineer",
   highestDegree: "Bachelors",
   location: "Andhra Pradesh",
-  bloodGroup: "B -ve"
+  bloodGroup: "B -ve",
+  isEmployee: true
 };
 
 // Function that will return firstname
@@ -32,7 +33,28 @@ function getMiddleName() {
 // Function that will return lastname
 function getLastName() {
   var nameLength = personData.name.split(" ").length;
-  return personData.name.split(" ")[nameLength - 1];
+  if (nameLength >= 2) {
+    return personData.name.split(" ")[nameLength - 1];
+  } else {
+    return "Not Applicable";
+  }
+}
+
+function getEmployeeStatus() {
+  if (personData.isEmployee) {
+    return React.createElement(
+      "p",
+      null,
+      "Designation: ",
+      personData.desgination
+    );
+  } else {
+    return React.createElement(
+      "p",
+      null,
+      "Designation: UnEmployeed"
+    );
+  }
 }
 
 var template = React.createElement(
@@ -68,12 +90,7 @@ var template = React.createElement(
     "Blood Group: ",
     personData.bloodGroup
   ),
-  React.createElement(
-    "p",
-    null,
-    "Designation: ",
-    personData.desgination
-  ),
+  getEmployeeStatus(),
   React.createElement(
     "p",
     null,

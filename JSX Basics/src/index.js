@@ -1,10 +1,11 @@
 const personData = {
-  name: "S G V D N Sai Santhosh Palakollu",
-  age: 21,
+  name: "Test",
+  age: 24,
   desgination: "Software Engineer",
   highestDegree: "Bachelors",
   location: "Andhra Pradesh",
   bloodGroup: "B -ve",
+  isEmployee: true,
 };
 
 // Function that will return firstname
@@ -30,7 +31,19 @@ function getMiddleName() {
 // Function that will return lastname
 function getLastName() {
   const nameLength = personData.name.split(" ").length;
-  return personData.name.split(" ")[nameLength - 1];
+  if (nameLength >= 2) {
+    return personData.name.split(" ")[nameLength - 1];
+  } else {
+    return "Not Applicable";
+  }
+}
+
+function getEmployeeStatus() {
+  if (personData.isEmployee) {
+    return <p>Designation: {personData.desgination}</p>;
+  } else {
+    return <p>Designation: UnEmployeed</p>;
+  }
 }
 
 const template = (
@@ -40,7 +53,7 @@ const template = (
     <p>Last Name: {getLastName()}</p>
     <p>Age: {personData.age}</p>
     <p>Blood Group: {personData.bloodGroup}</p>
-    <p>Designation: {personData.desgination}</p>
+    {getEmployeeStatus()}
     <p>Highest Degree: {personData.highestDegree}</p>
     <p>Location: {personData.location}</p>
   </div>
